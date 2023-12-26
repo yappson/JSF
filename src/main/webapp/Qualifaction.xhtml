@@ -1,0 +1,410 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<title>Facelet Title</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #f0f0f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .cust {
+        display: flex;
+        align-items: center;
+    }
+    .orine-button {
+        padding-left: 33px;
+        padding-top: 11px;
+        width: 9em;
+        height: 3em;
+        border-radius: 30em;
+        font-size: 15px;
+        font-family: inherit;
+        border: none;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        box-shadow: inset 6px 6px 12px #d9d9d9, inset -6px -6px 12px #ffffff,
+                    6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+    }
+
+    .orine-button::before {
+        content: '';
+        width: 0;
+        height: 3em;
+        border-radius: 30em;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-image: linear-gradient(to right, #0fd850 0%, #f9f047 100%);
+        transition: .5s ease;
+        display: block;
+        z-index: -1;
+    }
+
+    .orine-button:hover::before {
+        width: 9em;
+    }
+
+    .container-fluid {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 10px 10px 20px #dddddd, -10px -10px 20px #ffffff;
+    }
+
+    .top-nav {
+        background-color: #555555;
+        padding: 15px;
+        color: white;
+        text-align: left;
+        border-radius: 15px;
+    }
+
+    .sidebar {
+        width: 180px;
+        height: 410px;
+        padding-top: 20px;
+        padding-left: 10px;
+        border-radius: 50px;
+        background: #e0e0e0;
+        box-shadow: 20px 20px 60px #bebebe,
+                    -20px -20px 60px #ffffff;
+    }
+
+    .three-details-item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+
+    .three-details-item label {
+        flex: 0 0 30%;
+        margin-right: 20px;
+    }
+
+    .three-details-item .input-container {
+        flex: 0 0 60%;
+        background-color: #f0f0f0;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: inset 6px 6px 12px #d9d9d9, inset -6px -6px 12px #ffffff;
+    }
+
+    .custom-select,
+    .custom-table,
+    .page-info,
+    .neumorphic-form,
+    .form-group,
+    label,
+    input,
+    button {
+        /* Add your custom styling for these elements */
+        background-color: #f0f0f0;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: inset 6px 6px 12px #d9d9d9, inset -6px -6px 12px #ffffff,
+                    6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+    }
+
+    .custom-select {
+        /* Add specific styling for custom-select */
+    }
+
+    .custom-table {
+        /* Add specific styling for custom-table */
+    }
+
+    .page-info {
+        /* Add specific styling for page-info */
+    }
+
+    .neumorphic-form {
+        border: 2px solid #ddd;
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 10px 10px 20px #d9d9d9, -10px -10px 20px #ffffff,
+                    inset 6px 6px 12px #d9d9d9, inset -6px -6px 12px #ffffff;
+        width: 485px;
+        background-color: #f0f0f0;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 10px;
+        background-color: #f0f0f0;
+        box-shadow: inset 6px 6px 12px #d9d9d9, inset -6px -6px 12px #ffffff;
+    }
+
+    button {
+        padding: 10px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        background-color: #f0f0f0;
+        box-shadow: inset 6px 6px 12px #d9d9d9, inset -6px -6px 12px #ffffff,
+                    6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+    }
+
+    .submit-button {
+        background-color: #4CAF50;
+        color: #fff;
+    }
+
+    .clear-button {
+        background-color: #f44336;
+        color: #fff;
+    }
+    	
+		.logout-button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 5px 5px 10px #dddddd, -5px -5px 10px #ffffff;
+}
+
+.logout-button:hover {
+    background-color: #d32f2f; /* Darker red on hover */
+}
+</style>
+
+</h:head>
+<h:body>
+	<div class="container-fluid">
+		<div class="top-nav d-flex justify-content-between" >
+    <h3 style="text-align: left; color: white;">Employee Management System</h3>
+    <div class="cust">
+        <h:form>
+            <!-- Logout button with common style -->
+            <h:commandButton action="#{userController.logout}" value="Logout" styleClass="logout-button" />
+        </h:form>
+    </div>
+</div>
+		<br></br>
+		<div style="display: flex;">
+			<div class="sidebar" id="sidebar">
+				<h:form>
+					<br/>
+					<div class="orine">
+						<h:commandLink value="Create New" action="#{menuBean.createNew}" styleClass="orine-button" style="display: block; margin-bottom: 5px;" />
+					</div>
+					<br/>
+					<div class="orine">
+						<h:commandLink value="Dashboard" action="#{menuBean.admin}" styleClass="orine-button" style="display: block; margin-bottom: 5px;" />
+					</div>
+					<br/>
+					<div class="orine">
+						<h:commandLink value="Pie Chart" action="#{menuBean.pieChart}" styleClass="orine-button" style="display: block;" />
+					</div>
+				</h:form>
+			</div>
+			<div class="content" style="padding-left:16px; margin-left: 20px; width: calc(100% - 200px);">
+				<h:form id="registrationForm" >
+				
+   
+        <!-- Personal Details Section -->
+        <fieldset>
+  <legend>Personal Detail :</legend>
+        
+        <div class="three-details-item">
+            <h:outputLabel for="employeeCode">
+                <p>Employee Code</p>
+                <h:inputText id="employeeCode" value="#{qualiBean.selectedEmployee.employeeCode}" readonly="true" placeholder="employeeCode"/>
+            </h:outputLabel>
+
+            <h:outputLabel for="name">
+                <p>Name</p>
+                <h:inputText id="name" value="#{qualiBean.selectedEmployee.name}" readonly="true" placeholder="name"/>
+            </h:outputLabel>
+
+            <h:outputLabel for="email">
+                <p>E-mail</p>
+                <h:inputText id="email" value="#{qualiBean.selectedEmployee.email}" readonly="true" placeholder="E-mail"/>
+            </h:outputLabel>
+        </div>
+
+        <div class="three-details-item">
+            <h:outputLabel for="contactNumber">
+                <p>Contact Number</p>
+                <h:inputText id="contactNumber" value="#{qualiBean.selectedEmployee.contactNumber}" readonly="true" placeholder="Contact Number"/>
+            </h:outputLabel>
+
+            <h:outputLabel for="designation">
+                <p>Designation</p>
+                <h:inputText id="designation" value="#{qualiBean.selectedEmployee.designation}" readonly="true" placeholder="Designation"/>
+            </h:outputLabel>
+
+            <h:outputLabel for="department">
+                <p>Department</p>
+                <h:inputText id="department" value="#{qualiBean.selectedEmployee.department}" readonly="true" placeholder="Department"/>
+            </h:outputLabel>
+        </div>
+     
+        </fieldset>
+        <br/>
+        <br />
+       <fieldset>
+      
+  <legend>Qualification :</legend>
+  <h:messages globalOnly="true" showSummary="true" showDetail="false" style="color:red;" />
+  
+  
+   <h:commandButton value="Add" action="#{qualiBean.addGridItem}" />
+  
+  <h:panelGrid columns="2">
+        <h:outputLabel value=""/>
+        <h:outputLabel value=""/>
+            <h:panelGroup rendered="#{qualiBean.validationError}">
+                <h:messages globalOnly="true" showSummary="true" showDetail="false" style="color:red;" />
+            </h:panelGroup>
+
+        <ui:repeat value="#{qualiBean.gridItems}" var="qualification" varStatus="status">
+        <br/>
+        <fieldset>
+ 
+            <div class="three-details-item">
+                <h:outputLabel for="institute">
+                    <p>Institute</p>
+                    <div class="input-container">
+                    <h:inputText id="institute" value="#{qualification.institute}" placeholder="institute" required="true" requiredMessage="Institute Nmae Is Required"
+              validatorMessage=" Institute Name does not contain numbers and length should be less then 10">
+              <f:validateRegex pattern="(^[A-Za-z]+$)"/>
+              <f:validateLength  maximum="10"/>
+              <f:ajax event="blur" render="inst"/>
+        </h:inputText>
+        <h:message for="institute" styleClass="error-message" id="inst"
+              showSummary="true"
+              showDetail="false" style="color:red;"></h:message>
+              </div>
+           </h:outputLabel>
+              
+
+                <h:outputLabel for="degree">
+    <p>Degree</p>
+    <div class="input-container">
+        <h:selectOneMenu id="degree" value="#{qualification.degree}" required="true" requiredMessage="Degree Is Required">
+            <f:selectItem itemLabel="-- Select Degree --        " itemValue="" />
+            <f:selectItem itemLabel="Bachelor's" itemValue="Bachelor's" />
+            <f:selectItem itemLabel="Master's" itemValue="Master's" />
+            <f:selectItem itemLabel="Ph.D." itemValue="Ph.D." />
+             <f:selectItem itemLabel="-----------Other---------------------" itemValue="Other" />
+            
+            <!-- Add more options as needed --> <f:ajax event="blur" render="deg"/>
+        </h:selectOneMenu>
+        <h:message for="degree" styleClass="error-message" id="deg" showSummary="true" style="color:red;" showDetail="false" />
+    </div>
+</h:outputLabel>
+
+             <h:outputLabel for="specialization">
+    <p>Specialization</p>
+    <div class="input-container">
+        <h:selectOneMenu id="specialization" value="#{qualification.specialization}" required="true" requiredMessage="Specialization Name is Required">
+            <f:selectItem itemLabel="-- Select Specialization --" itemValue="" />
+            <f:selectItem itemLabel="Software Project Management" itemValue="Software Project Management" />
+            <f:selectItem itemLabel="SAP Consultancy Management" itemValue="SAP Consultancy Management" />
+            <f:selectItem itemLabel="Software Management" itemValue="Software Management" />
+            <f:selectItem itemLabel="Information Technology" itemValue="Information Technology" />
+            <f:selectItem itemLabel="E-Business System" itemValue="E-Business System" />
+            <f:selectItem itemLabel="Cyber Law Management" itemValue="Cyber Law Management" />
+            <f:selectItem itemLabel="Hardware Management" itemValue="Hardware Management" />
+            <f:selectItem itemLabel="E-commerce" itemValue="E-commerce" />
+            <f:selectItem itemLabel="Networking Management" itemValue="Networking Management" />
+            <f:selectItem itemLabel="Purchasing Management" itemValue="Purchasing Management" />
+            <f:selectItem itemLabel="Data Management" itemValue="Data Management" />
+            <f:selectItem itemLabel="HR" itemValue="HR" />
+            <f:ajax event="blur" render="inst12"/>
+        </h:selectOneMenu>
+        <h:message for="specialization" styleClass="error-message" id="inst12" showSummary="true" style="color:red;" showDetail="false" />
+        
+    </div>
+</h:outputLabel>
+
+            </div>
+            
+            
+            
+            
+
+            <div class="three-details-item">
+                <h:outputLabel for="fromPeriod">
+                    <p>From Period : <small>yyyy-mm-dd</small></p>
+             
+                          <div class="input-container">
+                   <h:inputText id="fromPeriod" value="#{qualification.fromPeriod}" placeholder="yyyy-MM-dd" type="date" required="true" requiredMessage="From Date Is Required" converter="customDateConverterImpl">
+    <f:ajax event="blur" execute="@this" render="fromPeriodMessage" />
+</h:inputText>
+<h:message id="fromPeriodMessage" for="fromPeriod" showSummary="true" showDetail="false" style="color:red;" />
+
+              </div>
+
+              </h:outputLabel>
+                
+
+            <h:outputLabel for="toPeriod">
+    <p>To Period : <small>yyyy-mm-dd</small></p>
+
+    <div class="input-container">
+        <h:inputText id="toPeriod" value="#{qualification.toPeriod}" placeholder="yyyy-MM-dd" type="date" required="true" requiredMessage="To Date Is Required" converter="customDateConverterImpl">
+          <f:ajax event="blur" execute="@this" render="toPeriodMessage" />
+           
+        </h:inputText>
+        <h:message for="toPeriod" id="toPeriodMessage" showSummary="true" showDetail="false" style="color:red;" />
+    </div>
+</h:outputLabel>
+
+               
+               
+<h:outputLabel for="percentage">
+    <p>Percentage</p>
+    <div class="input-container">
+        <h:inputText id="percentage" value="#{qualification.percentage}" placeholder="percentage" required="true" requiredMessage="Percentage is required">
+            <f:validateDoubleRange minimum="0" maximum="100.00" message="Percentage must be between 0 and 100.00" />
+           <!-- <f:validateRegex pattern="^(100(\.0{1,2})?|\d{1,2}(\.\d{1,2})?)%?$" /> -->
+            <f:ajax event="blur" render="pers" />
+        </h:inputText>
+        <h:message for="percentage" styleClass="error-message" id="pers" showSummary="true" showDetail="false" style="color:red;"></h:message>
+    </div>
+</h:outputLabel>
+            </div>
+
+            <h:commandButton value="Remove" action="#{qualiBean.removeGridItem(qualification)}" rendered="#{status.index > 0}" immediate="true" />
+
+            </fieldset>
+        </ui:repeat>
+
+        
+
+        <h:outputLabel value=""/>
+        <h:commandButton value="Submit" action="#{qualiBean.submit}" />
+    </h:panelGrid>
+    </fieldset>
+       </h:form>
+       
+  </div>
+    
+    </div>
+    </div>
+    </h:body>
+    </html>

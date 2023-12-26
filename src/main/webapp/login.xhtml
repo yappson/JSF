@@ -1,0 +1,157 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+   <style>
+   /* Importing fonts from Google */
+
+
+/* Reseting */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #fcf0f3;
+}
+
+.wrapper {
+    max-width: 350px;
+    min-height: 500px;
+    margin: 80px auto;
+    padding: 40px 30px 30px 30px;
+    background-color: #ecf0f3;
+    border-radius: 15px;
+    box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #fff;
+}
+
+.brand-title {
+  margin-top: 10px;
+  font-weight: 900;
+  font-size: 1.8rem;
+  color: #1DA1F2;
+  letter-spacing: 1px;
+  padding-left: 90px;
+}
+
+.logo {
+    width: 80px;
+    margin: auto;
+}
+
+.logo img {
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0px 0px 3px #5f5f5f,
+        0px 0px 0px 5px #ecf0f3,
+        8px 8px 15px #a7aaa7,
+        -8px -8px 15px #fff;
+}
+
+
+.wrapper .name {
+    font-weight: 600;
+    font-size: 1.4rem;
+    letter-spacing: 1.3px;
+    padding-left: 10px;
+    color: #555;
+}
+
+.wrapper .form-field input {
+    width: 100%;
+    display: block;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 1.2rem;
+    color: #666;
+    padding: 10px 15px 10px 10px;
+    /* border: 1px solid red; */
+}
+
+.wrapper .form-field {
+    padding-left: 10px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #fff;
+}
+
+.wrapper .form-field .fas {
+    color: #7FFF00;
+}
+
+.wrapper .btn {
+    box-shadow: none;
+    width: 100%;
+    height: 40px;
+    background-color: #00008B;
+    color: #fff;
+    border-radius: 25px;
+    box-shadow: 3px 3px 3px #000080,
+        -3px -3px 3px #fff;
+    letter-spacing: 1.3px;
+}
+
+.wrapper .btn:hover {
+    background-color: #6495ED;
+}
+
+.wrapper a {
+    text-decoration: none;
+    font-size: 0.8rem;
+    color: #03A9F4;
+}
+
+.wrapper a:hover {
+    color: #fff111;
+}
+
+@media(max-width: 380px) {
+    .wrapper {
+        margin: 30px 20px;
+        padding: 40px 15px 15px 15px;
+    }
+}
+   
+   </style>
+</h:head>
+
+<h:body>
+    <div class="wrapper">
+        <div class="logo">
+            <img src="crestimage.jpg" alt=""></img>
+        </div>
+          <div class="brand-title">ADMIN</div>
+      
+        <h:form class="p-3 mt-3">
+    <h:messages styleClass="error-message" globalOnly="true"  style="color:red"/>
+	 <span class="far fa-user">
+        <h:outputText value="User Name" />
+     </span>
+      <br />
+    <div class="form-field d-flex align-items-center">
+        <h:inputText id="username" value="#{username}" required="true" requiredMessage="Username is required" />
+        <h:message for="username" style="color: red;"/>
+    </div>
+	    <span class="far fa-user">
+        <h:outputText value="Password" />
+        </span>
+         <br />
+    <div class="form-field d-flex align-items-center">
+
+        <h:inputSecret id="password" value="#{password}" required="true" requiredMessage="Password is required"/>
+        <h:message for="password" style="color: red;"/>
+    </div>
+
+    <h:commandButton action="#{userController.login(username, password)}" value="Login" class="btn mt-3"/>
+</h:form>
+    </div>
+</h:body>
+
+</html>

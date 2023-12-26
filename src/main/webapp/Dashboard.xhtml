@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Full Height Sidebar</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      display: flex;
+      height: 100vh;
+    }
+
+  
+		.sidebar {
+			
+           width: 180px;
+           height: 410px;
+        /* background-color: #dddddd; */
+           padding-top: 20px;
+           padding-left: 10px;
+    /* border-radius: 15px; */
+    /* box-shadow: 5px 5px 10px #dddddd, -5px -5px 10px #ffffff; */
+           border-radius: 50px;
+           background: #e0e0e0;
+           box-shadow: 20px 20px 60px #bebebe,
+                     -20px -20px 60px #ffffff;
+
+		}
+
+    .content {
+      flex: 1;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .header {
+      background-color: #444;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="sidebar">
+      Sidebar Content
+    </div>
+
+    <div class="content">
+      <div class="header">
+        Header Content
+      </div>
+
+      <p>Main Content Goes Here</p>
+    </div>
+  </div>
+
+</body>
+</html>

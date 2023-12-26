@@ -1,0 +1,235 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<title>Facelet Title</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+	<style>
+		body {
+			margin: 0;
+			font-family: Arial, Helvetica, sans-serif;
+			background-color: #f0f0f0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			
+		}
+
+		.container-fluid {
+			background-color: #ffffff;
+			padding: 20px;
+			border-radius: 20px;
+			box-shadow: 10px 10px 20px #dddddd, -10px -10px 20px #ffffff;
+		}
+
+		.top-nav {
+			background-color: #555555;
+			padding: 15px;
+			color: white;
+			text-align: left;
+			border-radius: 15px;
+		}
+
+		
+		.sidebar {
+			
+           width: 180px;
+           height: 410px;
+        /* background-color: #dddddd; */
+           padding-top: 20px;
+           padding-left: 10px;
+    /* border-radius: 15px; */
+    /* box-shadow: 5px 5px 10px #dddddd, -5px -5px 10px #ffffff; */
+           border-radius: 50px;
+           background: #e0e0e0;
+           box-shadow: 20px 20px 60px #bebebe,
+                     -20px -20px 60px #ffffff;
+
+		}
+		
+/* Add this style to your CSS */
+.orine-button {
+	padding-left: 33px;
+    padding-top: 11px;
+    width: 9em;
+    height: 3em;
+    border-radius: 30em;
+    font-size: 15px;
+    font-family: inherit;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+}
+
+.orine-button::before {
+    content: '';
+    width: 0;
+    height: 3em;
+    border-radius: 30em;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(to right, #0fd850 0%, #f9f047 100%);
+    transition: .5s ease;
+    display: block;
+    z-index: -1;
+}
+
+.orine-button:hover::before {
+    width: 9em;
+}
+
+
+		.custom-button,
+.ybutton {
+    padding: 10px 15px;
+    margin-right: 10px; /* Adjusted margin to create space between buttons */
+    border: none;
+    background-color: #555555;
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px #dddddd, -5px -5px 10px #ffffff;
+}
+
+.custom-button:hover,
+.ybutton:hover {
+    background-color: #444444;
+}
+		.custom-select {
+			appearance: none;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			background: #ffffff;
+			padding: 8px;
+			border: 1px solid #555555;
+			border-radius: 4px;
+			font-size: 16px;
+			width: 100px;
+			cursor: pointer;
+			color: #555555;
+			box-shadow: inset 5px 5px 10px #dddddd, inset -5px -5px 10px #ffffff;
+		}
+
+		.custom-table {
+			width: 100%;
+			border-collapse: collapse;
+			margin-top: 20px;
+			box-shadow: 5px 5px 10px #dddddd, -5px -5px 10px #ffffff;
+		}
+
+		.custom-table th,
+		.custom-table td {
+			border: 1px solid #dddddd;
+			padding: 8px;
+			text-align: left;
+		}
+
+		.custom-table th {
+			background-color: #555555;
+			color: #ffffff;
+		}
+
+		.page-info {
+			font-size: 16px;
+			margin: 0 10px;
+			color: #555555;
+		}
+		
+    #myPieChart {
+        width: 200px;
+        height: 200px;
+    }
+    	
+		.logout-button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 5px 5px 10px #dddddd, -5px -5px 10px #ffffff;
+}
+
+.logout-button:hover {
+    background-color: #d32f2f; /* Darker red on hover */
+}
+
+	</style>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+</h:head>
+<h:body>
+	<div class="container-fluid">
+		<div class="top-nav d-flex justify-content-between" >
+    <h3 style="text-align: left; color: white;">Employee Management System</h3>
+    <div class="cust">
+        <h:form>
+            <!-- Logout button with common style -->
+            <h:commandButton action="#{userController.logout}" value="Logout" styleClass="logout-button" />
+        </h:form>
+    </div>
+</div>
+		<br></br>
+		<div style="display: flex;">
+			<div class="sidebar" id="sidebar">
+				<h:form>
+				<br/>
+				<div class="orine">
+            <h:commandLink value="Create New" action="#{menuBean.createNew}" styleClass="orine-button" style="display: block; margin-bottom: 5px;" />
+        </div>	<br/>	<div class="orine">
+					<h:commandLink value="Dashboard" action="#{menuBean.admin}" styleClass="orine-button" style="display: block; margin-bottom: 5px;" />
+					</div>
+					<br/>
+					
+					<div class="orine">
+					<h:commandLink value="Pie Chart" action="#{menuBean.pieChart}" styleClass="orine-button" style="display: block;" />
+					</div>
+			
+				</h:form>
+			</div>
+			<div class="content" style="
+    padding-left: 345px;
+    width: 757px;
+			">
+		 <canvas id="myPieChart">
+
+    <script>
+        // JavaScript code to initialize and render the pie chart
+        document.addEventListener('DOMContentLoaded', function () {
+            var ctx = document.getElementById('myPieChart').getContext('2d');
+            
+            // Get the chart data from the managed bean
+            var chartData = #{chartBean.chartData};
+
+            var data = {
+                labels: chartData.labels,
+                datasets: [{
+                    data: chartData.values,
+                    backgroundColor: chartData.colors
+                }]
+            };
+
+            var options = {};
+            var myPieChart = new Chart(ctx, {
+                type: 'pie',
+                data: data,
+                options: options
+            });
+        });
+    </script>
+    </canvas>
+
+			</div>
+		</div>
+	</div>
+	
+</h:body>
+</html>

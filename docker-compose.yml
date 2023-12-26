@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+  # MySQL service
+  mysql:
+    image: mysql:8.0.30-debian
+    container_name: mysql-container
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: zoom
+      MYSQL_DATABASE: ems1
+    ports:
+      - "3307:3306"  # Map container port 3306 to host port 3308
+
+  # Tomcat service with Spring Boot JSF application
+#  tomcat:
+#    image: tomcat:9.0.84-jdk17-temurin
+#    container_name: tomcat-container
+#    restart: always
+#    depends_on:
+#      - mysql
+#    ports:
+#      - "8080:8080"
+#    volumes:
+#      - ./target/EmployeManagementSystem-0.0.1-SNAPSHOT.war:/usr/local/tomcat/webapps/app.war
+
+  # Spring Boot JSF application
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: spring-boot-jsf-container
+    restart: always
+    depends_on:
+      - mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3307/ems1?useSSL=false  # Use the chosen MySQL port
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: zoom
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    ports:
+      - "8080:8080"
+
