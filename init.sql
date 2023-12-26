@@ -2,56 +2,41 @@ CREATE DATABASE IF NOT EXISTS ems1;
 USE ems1;
 
 
-CREATE TABLE `ems1`.`user_master` (
-  `user_master_id` INT PRIMARY KEY AUTO_INCREMENT,
-  `buid` INT,
-  `mail_id` VARCHAR(255),
-  `password` VARCHAR(255),
-  `usr_contact_num` VARCHAR(15),
-  `usr_fname` VARCHAR(50),
-  `usr_lname` VARCHAR(50),
-  `usr_mname` VARCHAR(1),
-  `username` VARCHAR(50)
-);
-
-INSERT INTO `ems1`.`user_master`
-(
-  `user_master_id`,
-  `buid`,
-  `mail_id`,
-  `password`,
-  `usr_contact_num`,
-  `usr_fname`,
-  `usr_lname`,
-  `usr_mname`,
-  `username`
-)
-VALUES
-(
-  1,          -- user_master_id
-  1,          -- buid
-  'admin@example.com', -- mail_id (replace with an appropriate email)
-  'admin',   -- password (replace with a hashed password)
-  '1234567890',        -- usr_contact_num
-  'jay',               -- usr_fname
-  'yadav',             -- usr_lname
-  'admin',             -- usr_mname
-  'admin'              -- username
-);
 
 
-CREATE TABLE `ems1`.`user_master` (
-  `user_master_id` INT PRIMARY KEY AUTO_INCREMENT,
-  `buid` INT,
-  `mail_id` VARCHAR(255),
-  `password` VARCHAR(255),
-  `usr_contact_num` VARCHAR(15),
-  `usr_fname` VARCHAR(50),
-  `usr_lname` VARCHAR(50),
-  `usr_mname` VARCHAR(1),
-  `username` VARCHAR(50)
-);
-INSERT INTO `ems1`.`user_master`
-  (`user_master_id`, `buid`, `mail_id`, `password`, `usr_contact_num`, `usr_fname`, `usr_lname`, `usr_mname`, `username`)
-VALUES
-  (1, 1, 'Admin@example.com', 'Admin', 'admin', 'Admin', 'Admin', 'A', 'admin');
+CREATE TABLE `users` (
+  `user_id` int NOT NULL,
+  `first_name` varchar(255) DEFAULT NULL,
+  `last_name` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+LOCK TABLES `users` WRITE;
+
+INSERT INTO `users` VALUES (1,'Admin','Admin','admin','admin');
+
+UNLOCK TABLES;
+
+
+
+CREATE TABLE `user_master` (
+  `user_master_id` bigint NOT NULL AUTO_INCREMENT,
+  `buid` varchar(255) DEFAULT NULL,
+  `mail_id` varchar(255) DEFAULT NULL,
+  `password` varchar(30) DEFAULT NULL,
+  `usr_contact_num` varchar(30) DEFAULT NULL,
+  `usr_fname` varchar(30) DEFAULT NULL,
+  `usr_lname` varchar(30) DEFAULT NULL,
+  `usr_mname` varchar(30) DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`user_master_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+LOCK TABLES `user_master` WRITE;
+
+INSERT INTO `user_master` VALUES (1,'1','1','admin','123456','jay','yadav',NULL,'admin');
+UNLOCK TABLES;
+
+

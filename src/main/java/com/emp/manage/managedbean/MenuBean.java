@@ -5,9 +5,11 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 @ManagedBean
 @RequestScoped
+@Component
 public class MenuBean {
 	
 	@Autowired
@@ -22,19 +24,22 @@ public class MenuBean {
     public String createNew() {
         // Logic for handling "Create New" action
     	setCurrentPage("createNew");
-        return "createNew"; // Outcome or navigation rule
+    	
+    	return "createNew?faces-redirect=true";
+       // Outcome or navigation rule
     }
 
     public String admin() {
     	
     	setCurrentPage("admin");
-  
-        return "admin"; // Outcome or navigation rule
+    	return "admin?faces-redirect=true";
+         // Outcome or navigation rule
     }
 
     public String pieChart() {
     	 setCurrentPage("pieChart");
-        return "pieChart"; // Outcome or navigation rule
+    	 return "pieChart?faces-redirect=true";
+       // Outcome or navigation rule
     }
     private String currentPage;
 
